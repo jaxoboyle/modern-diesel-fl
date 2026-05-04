@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Diesel | Fort Pierce, FL | Diesel Repair & Transmission</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1A1A1A',
+                            gray: '#F4F4F4',
+                            green: '#2ECC71',
+                            greenHover: '#25A25A'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Montserrat', sans-serif; }
+        
+        .logo-glow {
+            filter: drop-shadow(0 0 15px rgba(46, 204, 113, 0.3));
+        }
+
+        .interactive-card {
+            transition: all 0.25s ease;
+            border: 1px solid transparent;
+        }
+
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 10px 25px rgba(46, 204, 113, 0.25),
+                0 0 15px rgba(46, 204, 113, 0.15);
+        }
+
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(46, 204, 113, 0.25);
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(0.5);
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-brand-gray text-brand-dark antialiased">
+
+    <nav class="fixed w-full z-50 bg-brand-dark/95 backdrop-blur-sm text-white shadow-xl border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
+                    <span class="font-heading font-black text-xl tracking-tighter uppercase italic">Modern <span class="text-brand-green">Diesel</span></span>
+                </div>
+                <div class="hidden md:flex space-x-10 items-center text-xs font-bold uppercase tracking-widest">
+                    <a href="#why-us" class="hover:text-brand-green transition-colors">Why Us</a>
+                    <a href="#services" class="hover:text-brand-green transition-colors">Services</a>
+                    <a href="#reviews" class="hover:text-brand-green transition-colors">Reviews</a>
+                    <a href="#booking-section" class="bg-brand-green text-brand-dark px-7 py-3 rounded-md hover:bg-brand-greenHover transition-all font-black shadow-lg">Book Now</a>
+                </div>
+                <div class="md:hidden text-brand-green font-bold text-sm">
+                    <a href="tel:7722818600">(772) 281-8600</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero" class="relative pt-24 pb-12 lg:pt-32 lg:pb-32 bg-brand-dark text-white overflow-hidden min-h-[80vh] flex items-center">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,_rgba(46,204,113,0.1)_0%,_transparent_60%)] z-0"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
+            <div class="flex flex-col lg:flex-row gap-12 lg:items-center">
+                
+                <div class="w-full lg:w-3/4 flex flex-col space-y-6 lg:space-y-8">
+                    <a href="#booking-section" class="inline-flex items-center space-x-4 bg-brand-green/10 border border-brand-green/30 text-brand-green px-6 py-3 rounded-full text-[13px] font-black uppercase tracking-[0.2em] w-max animate-pulse-slow hover:bg-brand-green/20 hover:border-brand-green transition-all group">
+                        <span class="relative flex h-3 w-3">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-green opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-green"></span>
+                        </span>
+                        <span>Save 30% on first service</span>
+                        <svg class="w-4 h-4 transform group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path></svg>
+                    </a>
+
+                    <h1 class="font-heading text-4xl md:text-6xl lg:text-8xl font-black leading-[1.0] uppercase tracking-tighter">
+                        Stop Guessing.<br>
+                        <span class="text-brand-green">Fixed Right</span><br>
+                        The First Time.
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-gray-400 font-body max-w-2xl leading-relaxed border-l-4 border-brand-green/30 pl-6">
+                        Dealership-trained diesel specialists delivering unmatched power, reliability, and precision for <span class="text-white font-bold">Power Stroke, Cummins, & Duramax</span> in Fort Pierce, FL.
+                    </p>
+
+                    <div class="flex items-center space-x-6">
+                        <div class="flex -space-x-3">
+                            <div class="w-10 h-10 rounded-full border-2 border-brand-dark bg-gray-700 flex items-center justify-center text-[10px] font-bold">JD</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-brand-dark bg-brand-green flex items-center justify-center text-brand-dark text-[10px] font-bold">MS</div>
+                            <div class="w-10 h-10 rounded-full border-2 border-brand-dark bg-gray-600 flex items-center justify-center text-[10px] font-bold">RL</div>
+                        </div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-gray-400">
+                            <div class="flex text-brand-green text-sm mb-0.5 font-black tracking-widest">★★★★★</div>
+                            <span>4.9 Rating | 63+ Reviews</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                        <a href="#booking-section" class="inline-block bg-brand-green text-brand-dark px-10 py-5 rounded-md font-black uppercase tracking-widest text-sm shadow-xl hover:bg-brand-greenHover transition-all text-center">Book Service</a>
+                        <a href="tel:7722818600" class="inline-block border-2 border-white/20 text-white px-10 py-5 rounded-md font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all text-center italic font-bold tracking-widest">(772) 281-8600</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="booking-section" class="py-20 bg-brand-gray relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border border-gray-200">
+                <div class="bg-brand-dark p-10 text-center">
+                    <h2 class="text-3xl font-heading font-black text-white uppercase tracking-tighter italic leading-tight">
+                        Downtime costs money,<br>
+                        <span class="text-brand-green">lets fix that.</span>
+                    </h2>
+                </div>
+                
+                <div class="p-8 lg:p-12" id="booking-form-area">
+                    <form id="appointment-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">First Name</label>
+                            <input type="text" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Last Name</label>
+                            <input type="text" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Phone Number</label>
+                            <input type="tel" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="(772) 000-0000">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Engine Platform</label>
+                            <select required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none">
+                                <option value="" disabled selected>Select Engine</option>
+                                <option value="powerstroke">Power Stroke (Ford)</option>
+                                <option value="cummins">Cummins (RAM)</option>
+                                <option value="duramax">Duramax (GM)</option>
+                                <option value="other">Other Heavy Duty</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Preferred Date</label>
+                            <input type="date" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Issue Description</label>
+                            <textarea required rows="3" class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="Tell us what's happening with your truck..."></textarea>
+                        </div>
+                        
+                        <div class="md:col-span-2">
+                            <button type="submit" class="w-full bg-brand-green text-brand-dark font-black py-6 rounded-lg shadow-xl hover:bg-brand-greenHover transition-all uppercase tracking-widest text-sm">
+                                Send Service Request
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="why-us" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-center">
+                <div class="w-full md:w-1/2">
+                    <h2 class="text-4xl md:text-5xl font-heading font-black text-brand-dark uppercase tracking-tighter leading-none mb-4">
+                        Fort Pierce <br><span class="text-brand-green">Diesel Experts</span>
+                    </h2>
+                    <p class="text-brand-green text-sm font-bold uppercase tracking-widest mb-6 border-l-4 border-brand-green pl-4">Reliable Repairs. Done Right the First Time.</p>
+                    <p class="text-gray-500 font-medium leading-relaxed mb-8">
+                        We specialize in diagnosing and repairing diesel trucks the right way—no guesswork, no runaround. Whether it's a daily driver or a high-performance build, you'll get clear answers, quality work, and a truck you can rely on.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center space-x-3 text-sm font-bold uppercase tracking-wide">
+                            <span class="text-brand-green">✓</span> <span>Accurate Diagnostics — we find the issue fast</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-sm font-bold uppercase tracking-wide">
+                            <span class="text-brand-green">✓</span> <span>Engine & Transmission Repair — done right, built to last</span>
+                        </div>
+                        <div class="flex items-center space-x-3 text-sm font-bold uppercase tracking-wide">
+                            <span class="text-brand-green">✓</span> <span>Lift Kits & Performance Upgrades — better stance, more capability</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/2 grid grid-cols-2 gap-4">
+                    <div class="interactive-card bg-brand-dark p-8 rounded-xl text-center">
+                        <div class="text-brand-green text-4xl font-black mb-2">4.9</div>
+                        <div class="text-white text-[10px] font-bold uppercase tracking-widest">Google Rating</div>
+                    </div>
+                    <div class="interactive-card bg-brand-dark p-8 rounded-xl text-center">
+                        <div class="text-brand-green text-4xl font-black mb-2">63+</div>
+                        <div class="text-white text-[10px] font-bold uppercase tracking-widest">Verified Reviews</div>
+                    </div>
+                    <div class="interactive-card bg-brand-dark p-8 rounded-xl text-center">
+                        <div class="text-brand-green text-4xl font-black mb-2">20yr+</div>
+                        <div class="text-white text-[10px] font-bold uppercase tracking-widest">Experience</div>
+                    </div>
+                    <div class="interactive-card bg-brand-dark p-8 rounded-xl text-center">
+                        <div class="text-brand-green text-4xl font-black mb-2">30%</div>
+                        <div class="text-white text-[10px] font-bold uppercase tracking-widest">New Cust Disc.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="py-24 bg-brand-dark text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-heading font-black uppercase tracking-tighter italic">Voice of the <span class="text-brand-green">Customer</span></h2>
+                <p class="text-gray-400 text-xs uppercase tracking-widest mt-2">Real feedback from actual diesel owners</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="flex text-brand-green text-xs mb-4">★★★★★</div>
+                    <p class="text-sm italic leading-relaxed text-gray-300">"Dave and Eli are awesome to deal with. They take pride in their work and customer service."</p>
+                    <div class="mt-6 pt-6 border-t border-white/5 flex justify-between items-center">
+                        <span class="text-xs font-bold uppercase tracking-widest">Mario James Pico</span>
+                        <span class="text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded">GOOGLE</span>
+                    </div>
+                </div>
+                <div class="interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="flex text-brand-green text-xs mb-4">★★★★★</div>
+                    <p class="text-sm italic leading-relaxed text-gray-300">"6.7 Powerstroke owners — come here. They know these trucks inside and out."</p>
+                    <div class="mt-6 pt-6 border-t border-white/5 flex justify-between items-center">
+                        <span class="text-xs font-bold uppercase tracking-widest">Blaine Fuller</span>
+                        <span class="text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded">F250 EXPERT</span>
+                    </div>
+                </div>
+                <div class="interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="flex text-brand-green text-xs mb-4">★★★★★</div>
+                    <p class="text-sm italic leading-relaxed text-gray-300">"Diagnosed an issue in minutes that other shops couldn't find. What a true gentleman."</p>
+                    <div class="mt-6 pt-6 border-t border-white/5 flex justify-between items-center">
+                        <span class="text-xs font-bold uppercase tracking-widest">Ryan Adkins</span>
+                        <span class="text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded">HONESTY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-24 bg-white border-y border-gray-200">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="#booking-section" class="service-card block bg-brand-gray p-10 rounded-2xl border border-gray-100 cursor-pointer text-left">
+                    <div class="text-4xl mb-6">🛡️</div>
+                    <h3 class="font-heading font-black text-xl uppercase mb-4 tracking-tight">Maintenance</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">Stay ahead of problems with reliable diesel maintenance designed to keep your truck on the road and out of the shop.</p>
+                    <ul class="text-[10px] font-black text-brand-green uppercase tracking-widest space-y-2">
+                        <li>• Regular Inspections</li>
+                        <li>• Fluid & Filter Service</li>
+                    </ul>
+                </a>
+                
+                <a href="#booking-section" class="service-card block bg-brand-gray p-10 rounded-2xl border border-gray-100 cursor-pointer text-left">
+                    <div class="text-4xl mb-6">🔧</div>
+                    <h3 class="font-heading font-black text-xl uppercase mb-4 tracking-tight leading-tight">Engine & Transmission Repair and Replacement</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">Engine replacements and transmission repair built for diesel trucks—with performance-built transmission options for added strength and reliability.</p>
+                    <ul class="text-[10px] font-black text-brand-green uppercase tracking-widest space-y-2">
+                        <li>• Full Rebuilds</li>
+                        <li>• Performance Internals</li>
+                    </ul>
+                </a>
+                
+                <a href="#booking-section" class="service-card block bg-brand-gray p-10 rounded-2xl border border-gray-100 cursor-pointer text-left">
+                    <div class="text-4xl mb-6">⚡</div>
+                    <h3 class="font-heading font-black text-xl uppercase mb-4 tracking-tight">Performance</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-6">Custom diesel performance upgrades—from lift kits to turbo and fuel system enhancements—built for power and reliability.</p>
+                    <ul class="text-[10px] font-black text-brand-green uppercase tracking-widest space-y-2">
+                        <li>• Lift Kits & Stance</li>
+                        <li>• Turbo & Fuel Upgrades</li>
+                    </ul>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-brand-dark text-gray-500 py-20 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <img src="modern diesel logo.png" alt="Modern Diesel" class="h-12 mb-6 mx-auto md:mx-0">
+                    <p class="text-sm leading-relaxed max-w-xs mx-auto md:mx-0">South Florida's premier destination for heavy-duty diesel repair and custom transmissions.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-6">Location</h4>
+                    <p class="text-sm">1911 Okeechobee Rd<br>Fort Pierce, FL 34950</p>
+                    <p class="mt-4 text-brand-green font-bold text-lg"><a href="tel:7722818600">(772) 281-8600</a></p>
+                </div>
+                <div>
+                    <h4 class="text-white font-black uppercase text-xs tracking-widest mb-6">Business Hours</h4>
+                    <p class="text-sm">Mon – Fri: 8:00 AM – 5:00 PM</p>
+                    <p class="text-sm">Sat – Sun: Closed</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.4em] opacity-40">
+                <p>&copy; 2024 Modern Diesel Repair & Performance</p>
+                <p class="mt-4 md:mt-0">Fort Pierce, Florida | 20+ Years Experience</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const area = document.getElementById('booking-form-area');
+            area.innerHTML = `
+                <div class="py-12 text-center">
+                    <div class="text-brand-green text-6xl mb-6">✓</div>
+                    <h3 class="font-heading font-black text-2xl uppercase italic text-brand-dark">Request Received</h3>
+                    <p class="text-gray-500 mt-4 max-w-sm mx-auto font-medium">We've received your info. A lead technician will be in touch shortly.</p>
+                    <button onclick="location.reload()" class="mt-8 text-xs font-black uppercase tracking-widest border-b-2 border-brand-green pb-1">Send another request</button>
+                </div>
+            `;
+        });
+
+        const dateInput = document.querySelector('input[type="date"]');
+        if(dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
+    </script>
+</body>
+</html>
