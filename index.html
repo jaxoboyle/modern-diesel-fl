@@ -3,6 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '4409805252638768');
+    fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=4409805252638768&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
     <title>Modern Diesel | Fort Pierce, FL | Diesel Repair & Transmission</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -66,6 +86,11 @@
         /* Formspree State Styling */
         [data-fs-success], [data-fs-error] {
             display: none;
+        }
+
+        /* Review fade transition */
+        .review-content {
+            transition: opacity 0.4s ease-in-out;
         }
     </style>
 </head>
@@ -166,20 +191,39 @@
                             </div>
                             <div class="md:col-span-2">
                                 <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Phone Number</label>
-                                <input type="tel" name="phone" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="(772) 000-0000">
+                                <input type="tel" id="phone_input" name="phone" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="(772) 000-0000">
                                 <span data-fs-error="phone" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
                             </div>
-                            <div>
-                                <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Engine Platform</label>
-                                <select name="engine_platform" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none">
-                                    <option value="" disabled selected>Select Engine</option>
-                                    <option value="powerstroke">Power Stroke (Ford)</option>
-                                    <option value="cummins">Cummins (RAM)</option>
-                                    <option value="duramax">Duramax (GM)</option>
-                                    <option value="other">Other Heavy Duty</option>
-                                </select>
-                                <span data-fs-error="engine_platform" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
+                            
+                            <!-- Vehicle Details Breakdown -->
+                            <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-6">
+                                <div>
+                                    <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Year</label>
+                                    <select id="year_select" name="year" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none">
+                                        <option value="" disabled selected>Year</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Make</label>
+                                    <select id="make_select" name="make" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none">
+                                        <option value="" disabled selected>Make</option>
+                                        <option value="Ford">Ford</option>
+                                        <option value="RAM">RAM</option>
+                                        <option value="Chevrolet">Chevrolet</option>
+                                        <option value="GMC">GMC</option>
+                                        <option value="Nissan">Nissan</option>
+                                        <option value="Toyota">Toyota</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div id="model_container">
+                                    <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Model</label>
+                                    <select id="model_select" name="model" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none">
+                                        <option value="" disabled selected>Model</option>
+                                    </select>
+                                </div>
                             </div>
+
                             <div>
                                 <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Preferred Date</label>
                                 <input type="date" name="preferred_date" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
@@ -256,29 +300,32 @@
                 <p class="text-gray-400 text-xs uppercase tracking-widest mt-2">Real feedback from actual diesel owners</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
-                    <div class="flex text-brand-green text-xs mb-4">★★★★★</div>
-                    <p class="text-sm italic leading-relaxed text-gray-300">"Dave and Eli are awesome to deal with. They take pride in their work and customer service."</p>
+            <div id="review-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="review-card interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="review-stars flex text-brand-green text-xs mb-4">★★★★★</div>
+                    <p class="review-text text-sm italic leading-relaxed text-gray-300">"Dave and Eli are awesome to deal with. They take pride in their work and customer service."</p>
                     <div class="mt-6 pt-6 border-t border-white/5 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-widest">Mario James Pico</span>
-                        <span class="text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded">GOOGLE</span>
+                        <span class="review-name text-xs font-bold uppercase tracking-widest">Mario James Pico</span>
+                        <span class="review-tag text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded uppercase">GOOGLE</span>
                     </div>
                 </div>
-                <div class="interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
-                    <div class="flex text-brand-green text-xs mb-4">★★★★★</div>
-                    <p class="text-sm italic leading-relaxed text-gray-300">"6.7 Powerstroke owners — come here. They know these trucks inside and out."</p>
+                <!-- Card 2 -->
+                <div class="review-card interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="review-stars flex text-brand-green text-xs mb-4">★★★★★</div>
+                    <p class="review-text text-sm italic leading-relaxed text-gray-300">"6.7 Powerstroke owners — come here. They know these trucks inside and out."</p>
                     <div class="mt-6 pt-6 border-t border-white/5 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-widest">Blaine Fuller</span>
-                        <span class="text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded">F250 EXPERT</span>
+                        <span class="review-name text-xs font-bold uppercase tracking-widest">Blaine Fuller</span>
+                        <span class="review-tag text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded uppercase">F250 EXPERT</span>
                     </div>
                 </div>
-                <div class="interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
-                    <div class="flex text-brand-green text-xs mb-4">★★★★★</div>
-                    <p class="text-sm italic leading-relaxed text-gray-300">"Diagnosed an issue in minutes that other shops couldn't find. What a true gentleman."</p>
+                <!-- Card 3 -->
+                <div class="review-card interactive-card bg-white/5 p-8 rounded-2xl border border-white/10">
+                    <div class="review-stars flex text-brand-green text-xs mb-4">★★★★★</div>
+                    <p class="review-text text-sm italic leading-relaxed text-gray-300">"Diagnosed an issue in minutes that other shops couldn't find. What a true gentleman."</p>
                     <div class="mt-6 pt-6 border-t border-white/5 flex justify-between items-center">
-                        <span class="text-xs font-bold uppercase tracking-widest">Ryan Adkins</span>
-                        <span class="text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded">HONESTY</span>
+                        <span class="review-name text-xs font-bold uppercase tracking-widest">Ryan Adkins</span>
+                        <span class="review-tag text-[9px] text-gray-500 bg-white/5 px-2 py-1 rounded uppercase">HONESTY</span>
                     </div>
                 </div>
             </div>
@@ -328,7 +375,6 @@
         <div class="max-w-7xl mx-auto text-center md:text-left">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
                 <div>
-                    <img src="modern diesel logo.png" alt="Modern Diesel" class="h-12 mb-6 mx-auto md:mx-0">
                     <p class="text-sm leading-relaxed max-w-xs mx-auto md:mx-0">South Florida's premier destination for heavy-duty diesel repair and custom transmissions.</p>
                 </div>
                 <div>
@@ -413,12 +459,144 @@
     <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
     <script>
-        // Set minimum date for the date picker
+        // --- 1. Phone Formatting Logic ---
+        const phoneInput = document.getElementById('phone_input');
+        if (phoneInput) {
+            phoneInput.addEventListener('input', (e) => {
+                let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+                e.target.value = !x[2] ? x[1] : x[1] + '-' + x[2] + (x[3] ? '-' + x[3] : '');
+            });
+        }
+
+        // --- 2. Dynamic Year/Make/Model Logic ---
+        const yearSelect = document.getElementById('year_select');
+        const makeSelect = document.getElementById('make_select');
+        const modelSelect = document.getElementById('model_select');
+        const modelContainer = document.getElementById('model_container');
+
+        // Populate Years
+        if (yearSelect) {
+            const currentYear = new Date().getFullYear();
+            for (let i = currentYear; i >= 1995; i--) {
+                const opt = document.createElement('option');
+                opt.value = i;
+                opt.innerText = i;
+                yearSelect.appendChild(opt);
+            }
+        }
+
+        const truckModels = {
+            'Ford': ['F-250', 'F-350', 'F-450', 'F-550', 'Excursion'],
+            'RAM': ['2500', '3500', '4500', '5500'],
+            'Chevrolet': ['Silverado 2500', 'Silverado 3500', 'Silverado 4500'],
+            'GMC': ['Sierra 2500', 'Sierra 3500', 'Sierra 4500'],
+            'Nissan': ['Titan XD'],
+            'Toyota': ['Tundra (Heavy Duty)']
+        };
+
+        if (makeSelect) {
+            makeSelect.addEventListener('change', (e) => {
+                const make = e.target.value;
+                
+                // Clear existing model UI
+                modelContainer.innerHTML = '';
+                
+                const label = document.createElement('label');
+                label.className = "block text-[10px] font-black text-gray-400 uppercase mb-2";
+                label.innerText = "Model";
+                modelContainer.appendChild(label);
+
+                if (make === 'Other') {
+                    // Create text input for 'Other'
+                    const input = document.createElement('input');
+                    input.type = 'text';
+                    input.name = 'model';
+                    input.required = true;
+                    input.placeholder = "Enter Model Name";
+                    input.className = "w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm";
+                    modelContainer.appendChild(input);
+                } else {
+                    // Create dropdown for known brands
+                    const select = document.createElement('select');
+                    select.id = "model_select";
+                    select.name = "model";
+                    select.required = true;
+                    select.className = "w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none";
+                    
+                    const defaultOpt = document.createElement('option');
+                    defaultOpt.value = "";
+                    defaultOpt.disabled = true;
+                    defaultOpt.selected = true;
+                    defaultOpt.innerText = "Model";
+                    select.appendChild(defaultOpt);
+
+                    if (truckModels[make]) {
+                        truckModels[make].forEach(m => {
+                            const opt = document.createElement('option');
+                            opt.value = m;
+                            opt.innerText = m;
+                            select.appendChild(opt);
+                        });
+                    }
+
+                    modelContainer.appendChild(select);
+                }
+            });
+        }
+
+        // --- 3. Date Picker Logic ---
         const dateInput = document.querySelector('input[type="date"]');
         if(dateInput) {
             const today = new Date().toISOString().split('T')[0];
             dateInput.setAttribute('min', today);
         }
+
+        // --- 4. Rotating Reviews Logic ---
+        const reviewsData = [
+            { stars: "★★★★★", text: "Dave and Eli are awesome to deal with. They take pride in their work and customer service.", name: "Mario James Pico", tag: "GOOGLE" },
+            { stars: "★★★★★", text: "6.7 Powerstroke owners — come here. They know these trucks inside and out.", name: "Blaine Fuller", tag: "F250 EXPERT" },
+            { stars: "★★★★★", text: "Diagnosed an issue in minutes that other shops couldn't find. What a true gentleman.", name: "Ryan Adkins", tag: "HONESTY" },
+            { stars: "★★★★★", text: "Best diesel shop in South Florida. They actually explain what's wrong instead of just billing you.", name: "Chris Miller", tag: "CUMMINS" },
+            { stars: "★★★★★", text: "Fair pricing and fast turnaround. They fixed my transmission when others said it was a total loss.", name: "Sarah Jenkins", tag: "FLEET OWNER" },
+            { stars: "★★★★★", text: "The lift kit and tune they did on my Silverado is perfect. No vibrations, just pure power.", name: "Jake D.", tag: "PERFORMANCE" },
+            { stars: "★★★★★", text: "Professional, clean shop, and high-end equipment. You get what you pay for here.", name: "Mike Thompson", tag: "GOOGLE" },
+            { stars: "★★★★★", text: "Only place I trust with my Duramax. Dave is a wizard with engine diagnostics.", name: "Robert L.", tag: "DURAMAX" },
+            { stars: "★★★★★", text: "Honest guys. They told me I didn't need a part that another shop tried to upsell me on.", name: "Tony V.", tag: "TRUSTED" }
+        ];
+
+        let currentBatchIndex = 0;
+        const reviewCards = document.querySelectorAll('.review-card');
+
+        function updateReviews() {
+            // Fade out
+            reviewCards.forEach(card => card.style.opacity = '0');
+
+            setTimeout(() => {
+                currentBatchIndex = (currentBatchIndex + 3) % reviewsData.length;
+
+                reviewCards.forEach((card, i) => {
+                    const data = reviewsData[(currentBatchIndex + i) % reviewsData.length];
+                    
+                    // Update content
+                    card.querySelector('.review-stars').innerText = data.stars;
+                    card.querySelector('.review-text').innerText = `"${data.text}"`;
+                    card.querySelector('.review-name').innerText = data.name;
+                    card.querySelector('.review-tag').innerText = data.tag;
+                    
+                    // Fade in
+                    card.style.opacity = '1';
+                });
+            }, 400); // Sync with CSS transition
+        }
+
+        // Initialize transition styles for all cards
+        reviewCards.forEach(card => {
+            card.style.transition = 'opacity 0.4s ease-in-out';
+        });
+
+        // Set interval for every 15 seconds
+        setInterval(updateReviews, 15000);
+
     </script>
 </body>
 </html>
