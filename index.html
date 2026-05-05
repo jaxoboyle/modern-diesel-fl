@@ -62,6 +62,17 @@
             filter: invert(0.5);
             cursor: pointer;
         }
+
+        /* Formspree State Styling */
+        [data-fs-success], [data-fs-error] {
+            display: none;
+        }
+        .fs-success [data-fs-success] {
+            display: block;
+        }
+        .fs-success #appointment-form {
+            display: none;
+        }
     </style>
 </head>
 <body class="bg-brand-gray text-brand-dark antialiased">
@@ -90,7 +101,6 @@
         
         <div class="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
             <div class="flex flex-col lg:flex-row gap-12 lg:items-center">
-                
                 <div class="w-full lg:w-3/4 flex flex-col space-y-6 lg:space-y-8">
                     <a href="#booking-section" class="inline-flex items-center space-x-4 bg-brand-green/10 border border-brand-green/30 text-brand-green px-6 py-3 rounded-full text-[13px] font-black uppercase tracking-[0.2em] w-max animate-pulse-slow hover:bg-brand-green/20 hover:border-brand-green transition-all group">
                         <span class="relative flex h-3 w-3">
@@ -128,7 +138,6 @@
                         <a href="tel:7722818600" class="inline-block border-2 border-white/20 text-white px-10 py-5 rounded-md font-black uppercase tracking-widest text-sm hover:bg-white/10 transition-all text-center italic font-bold tracking-widest">(772) 281-8600</a>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -144,42 +153,63 @@
                 </div>
                 
                 <div class="p-8 lg:p-12" id="booking-form-area">
-                    <form id="appointment-form" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">First Name</label>
-                            <input type="text" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Last Name</label>
-                            <input type="text" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
-                        </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Phone Number</label>
-                            <input type="tel" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="(772) 000-0000">
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Engine Platform</label>
-                            <select required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none">
-                                <option value="" disabled selected>Select Engine</option>
-                                <option value="powerstroke">Power Stroke (Ford)</option>
-                                <option value="cummins">Cummins (RAM)</option>
-                                <option value="duramax">Duramax (GM)</option>
-                                <option value="other">Other Heavy Duty</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Preferred Date</label>
-                            <input type="date" required class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
-                        </div>
-                        <div class="md:col-span-2">
-                            <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Issue Description</label>
-                            <textarea required rows="3" class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="Tell us what's happening with your truck..."></textarea>
-                        </div>
-                        
-                        <div class="md:col-span-2">
-                            <button type="submit" class="w-full bg-brand-green text-brand-dark font-black py-6 rounded-lg shadow-xl hover:bg-brand-greenHover transition-all uppercase tracking-widest text-sm">
-                                Send Service Request
-                            </button>
+                    <!-- Formspree Success Message -->
+                    <div data-fs-success class="py-12 text-center">
+                        <div class="text-brand-green text-6xl mb-6">✓</div>
+                        <h3 class="font-heading font-black text-2xl uppercase italic text-brand-dark">Request Received</h3>
+                        <p class="text-gray-500 mt-4 max-w-sm mx-auto font-medium">We've received your info. A lead technician will be in touch shortly to get you back on the road.</p>
+                        <button onclick="location.reload()" class="mt-8 text-xs font-black uppercase tracking-widest border-b-2 border-brand-green pb-1">Send another request</button>
+                    </div>
+
+                    <!-- General Error Message -->
+                    <div data-fs-error class="mb-6 p-4 bg-red-50 text-red-600 rounded-lg text-sm font-bold uppercase tracking-wider text-center">
+                        Oops! There was a problem submitting your request. Please try again.
+                    </div>
+
+                    <form id="appointment-form">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">First Name</label>
+                                <input type="text" name="first_name" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
+                                <span data-fs-error="first_name" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Last Name</label>
+                                <input type="text" name="last_name" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
+                                <span data-fs-error="last_name" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Phone Number</label>
+                                <input type="tel" name="phone" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="(772) 000-0000">
+                                <span data-fs-error="phone" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Engine Platform</label>
+                                <select name="engine_platform" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm font-semibold appearance-none">
+                                    <option value="" disabled selected>Select Engine</option>
+                                    <option value="powerstroke">Power Stroke (Ford)</option>
+                                    <option value="cummins">Cummins (RAM)</option>
+                                    <option value="duramax">Duramax (GM)</option>
+                                    <option value="other">Other Heavy Duty</option>
+                                </select>
+                                <span data-fs-error="engine_platform" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
+                            </div>
+                            <div>
+                                <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Preferred Date</label>
+                                <input type="date" name="preferred_date" required data-fs-field class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm">
+                                <span data-fs-error="preferred_date" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="block text-[10px] font-black text-gray-400 uppercase mb-2">Issue Description</label>
+                                <textarea name="message" required data-fs-field rows="3" class="w-full border border-gray-200 px-4 py-4 rounded-lg focus:outline-none focus:border-brand-green bg-gray-50 text-sm" placeholder="Tell us what's happening with your truck..."></textarea>
+                                <span data-fs-error="message" class="text-[10px] text-red-500 font-bold mt-1 block"></span>
+                            </div>
+                            
+                            <div class="md:col-span-2">
+                                <button type="submit" data-fs-submit-btn class="w-full bg-brand-green text-brand-dark font-black py-6 rounded-lg shadow-xl hover:bg-brand-greenHover transition-all uppercase tracking-widest text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Send Service Request
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
@@ -196,7 +226,7 @@
                     </h2>
                     <p class="text-brand-green text-sm font-bold uppercase tracking-widest mb-6 border-l-4 border-brand-green pl-4">Reliable Repairs. Done Right the First Time.</p>
                     <p class="text-gray-500 font-medium leading-relaxed mb-8">
-                        We specialize in diagnosing and repairing diesel trucks the right way—no guesswork, no runaround. Whether it's a daily driver or a high-performance build, you'll get clear answers, quality work, and a truck you can rely on.
+                        We specialize in diagnosing and repairing diesel trucks the right way—no guesswork, no runaround. Whether it’s a daily driver or a high-performance build, you’ll get clear answers, quality work, and a truck you can rely on.
                     </p>
                     <div class="space-y-4">
                         <div class="flex items-center space-x-3 text-sm font-bold uppercase tracking-wide">
@@ -272,6 +302,7 @@
     <section id="services" class="py-24 bg-white border-y border-gray-200">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Maintenance Card -->
                 <a href="#booking-section" class="service-card block bg-brand-gray p-10 rounded-2xl border border-gray-100 cursor-pointer text-left">
                     <div class="text-4xl mb-6">🛡️</div>
                     <h3 class="font-heading font-black text-xl uppercase mb-4 tracking-tight">Maintenance</h3>
@@ -282,6 +313,7 @@
                     </ul>
                 </a>
                 
+                <!-- Repair Card -->
                 <a href="#booking-section" class="service-card block bg-brand-gray p-10 rounded-2xl border border-gray-100 cursor-pointer text-left">
                     <div class="text-4xl mb-6">🔧</div>
                     <h3 class="font-heading font-black text-xl uppercase mb-4 tracking-tight leading-tight">Engine & Transmission Repair and Replacement</h3>
@@ -292,6 +324,7 @@
                     </ul>
                 </a>
                 
+                <!-- Performance Card -->
                 <a href="#booking-section" class="service-card block bg-brand-gray p-10 rounded-2xl border border-gray-100 cursor-pointer text-left">
                     <div class="text-4xl mb-6">⚡</div>
                     <h3 class="font-heading font-black text-xl uppercase mb-4 tracking-tight">Performance</h3>
@@ -330,20 +363,18 @@
         </div>
     </footer>
 
+    <!-- Formspree Integration Scripts -->
     <script>
-        document.getElementById('appointment-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const area = document.getElementById('booking-form-area');
-            area.innerHTML = `
-                <div class="py-12 text-center">
-                    <div class="text-brand-green text-6xl mb-6">✓</div>
-                    <h3 class="font-heading font-black text-2xl uppercase italic text-brand-dark">Request Received</h3>
-                    <p class="text-gray-500 mt-4 max-w-sm mx-auto font-medium">We've received your info. A lead technician will be in touch shortly.</p>
-                    <button onclick="location.reload()" class="mt-8 text-xs font-black uppercase tracking-widest border-b-2 border-brand-green pb-1">Send another request</button>
-                </div>
-            `;
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { 
+            formElement: '#appointment-form', 
+            formId: 'mwvyolob'
         });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
+    <script>
+        // Set minimum date for the date picker
         const dateInput = document.querySelector('input[type="date"]');
         if(dateInput) {
             const today = new Date().toISOString().split('T')[0];
