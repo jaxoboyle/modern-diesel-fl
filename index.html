@@ -15,14 +15,13 @@
     :root {
       --green:      #22c55e;
       --green-dark: #16a34a;
-      --green-glow: rgba(34, 197, 94, 0.20);
-      --black:      #080808;
+      --green-glow: rgba(34, 197, 94, 0.18);
+      --black:      #0a0a0a;
       --dark:       #111111;
-      --dark2:      #1a1a1a;
-      --dark3:      #242424;
-      --card:       rgba(255,255,255,0.04);
-      --border:     rgba(255,255,255,0.09);
-      --gray3:      #888;
+      --dark2:      #191919;
+      --dark3:      #232323;
+      --card:       rgba(255,255,255,0.055);
+      --border:     rgba(255,255,255,0.10);
       --white:      #ffffff;
       --font-h:     'Barlow Condensed', sans-serif;
       --font-b:     'Inter', sans-serif;
@@ -39,8 +38,7 @@
       color: var(--white);
       overflow-x: hidden;
       line-height: 1.6;
-      /* Reserve space for sticky bottom bar */
-      padding-bottom: 72px;
+      padding-bottom: 76px;
     }
 
     ::-webkit-scrollbar { width: 4px; }
@@ -50,762 +48,366 @@
     img { display: block; max-width: 100%; }
     a { text-decoration: none; color: inherit; }
 
-    /* ── LAYOUT ── */
-    .wrap {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-    .section { padding: 68px 0; }
+    .wrap { max-width: 680px; margin: 0 auto; padding: 0 20px; }
+    .section { padding: 64px 0; }
 
 
-    /* ════════════════════════════════
-       TOP BAR
-    ════════════════════════════════ */
+    /* ── TOP BAR ── */
     .top-bar {
-      position: sticky;
-      top: 0;
-      z-index: 200;
-      background: rgba(8, 8, 8, 0.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(34, 197, 94, 0.18);
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(10,10,10,0.96);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(34,197,94,0.16);
     }
     .top-bar-inner {
-      max-width: 680px;
-      margin: 0 auto;
-      padding: 13px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
+      max-width: 680px; margin: 0 auto;
+      padding: 12px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
     }
-    .logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
     .logo-icon {
-      width: 38px; height: 38px;
-      background: var(--green);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      color: #000;
-      flex-shrink: 0;
-      box-shadow: 0 0 12px rgba(34,197,94,0.3);
+      width: 38px; height: 38px; background: var(--green); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: #000; flex-shrink: 0;
+      box-shadow: 0 0 14px rgba(34,197,94,0.28);
     }
     .logo-text { line-height: 1.2; }
-    .logo-name {
-      font-family: var(--font-h);
-      font-size: 17px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-    .logo-sub {
-      font-size: 10px;
-      color: var(--green);
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-    }
+    .logo-name { font-family: var(--font-h); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.3px; }
+    .logo-sub { font-size: 10px; color: var(--green); letter-spacing: 1.2px; text-transform: uppercase; }
     .nav-phone {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--green-glow);
-      border: 1px solid rgba(34, 197, 94, 0.35);
-      border-radius: 50px;
-      padding: 9px 18px;
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--green);
-      transition: background 0.2s;
-      white-space: nowrap;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--green-glow); border: 1px solid rgba(34,197,94,0.32);
+      border-radius: 50px; padding: 9px 18px;
+      font-size: 14px; font-weight: 700; color: var(--green);
+      transition: background 0.2s; white-space: nowrap;
     }
-    .nav-phone:hover { background: rgba(34, 197, 94, 0.28); }
+    .nav-phone:hover { background: rgba(34,197,94,0.26); }
 
 
-    /* ════════════════════════════════
-       HERO
-    ════════════════════════════════ */
+    /* ── HERO ── */
     .hero {
-      position: relative;
-      min-height: 94vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding-bottom: 52px;
-      overflow: hidden;
+      position: relative; min-height: 100svh;
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding-bottom: 52px; overflow: hidden;
     }
     .hero-bg {
-      position: absolute;
-      inset: 0;
-      background-image: url('https://cdn10.localdatacdn.com/fl/fort-pierce/6639501/original/cfstXmMK7A.jpg');
-      background-size: cover;
-      background-position: center 25%;
-      filter: brightness(0.32) saturate(0.75);
-      transform: scale(1.02);
-      transition: transform 8s ease;
+      position: absolute; inset: 0;
+      background-image: url('images/lp-img-3.jpg');
+      background-size: cover; background-position: center 30%;
+      filter: brightness(0.38) saturate(0.8);
+      transform: scale(1.03); transition: transform 8s ease;
     }
     .hero-grad {
-      position: absolute;
-      inset: 0;
+      position: absolute; inset: 0;
       background: linear-gradient(
         to bottom,
-        rgba(8,8,8,0.05) 0%,
-        rgba(8,8,8,0.25) 25%,
-        rgba(8,8,8,0.72) 60%,
+        rgba(10,10,10,0.08) 0%,
+        rgba(10,10,10,0.28) 28%,
+        rgba(10,10,10,0.68) 58%,
         rgba(17,17,17,1) 100%
       );
     }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-    }
+    .hero-content { position: relative; z-index: 2; }
 
-    /* Offer pill */
     .offer-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--green);
-      color: #000;
-      font-weight: 800;
-      font-size: 13px;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      padding: 7px 18px;
-      border-radius: 50px;
-      margin-bottom: 22px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--green); color: #000;
+      font-weight: 800; font-size: 13px; letter-spacing: 0.8px;
+      text-transform: uppercase; padding: 7px 18px; border-radius: 50px;
+      margin-bottom: 20px;
     }
 
     .hero-h1 {
       font-family: var(--font-h);
-      font-size: clamp(44px, 12vw, 72px);
-      font-weight: 900;
-      line-height: 1.0;
-      text-transform: uppercase;
-      letter-spacing: -0.5px;
-      margin-bottom: 18px;
+      font-size: clamp(42px, 11vw, 68px);
+      font-weight: 900; line-height: 1.0;
+      text-transform: uppercase; letter-spacing: -0.5px;
+      margin-bottom: 16px;
     }
     .hero-h1 .accent { color: var(--green); }
 
     .hero-sub {
-      font-size: 18px;
-      color: rgba(255, 255, 255, 0.76);
-      line-height: 1.7;
-      margin-bottom: 28px;
-      max-width: 500px;
+      font-size: 17px; color: rgba(255,255,255,0.80);
+      line-height: 1.72; margin-bottom: 28px; max-width: 480px;
     }
 
-    /* Credibility bar */
     .cred-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 10px 16px;
-      margin-bottom: 32px;
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 8px 14px; margin-bottom: 32px;
     }
     .cred-item {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-      font-size: 14px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.88);
+      display: flex; align-items: center; gap: 7px;
+      font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.88);
     }
     .cred-stars { color: #fbbf24; font-size: 15px; letter-spacing: 1.5px; }
-    .cred-sep {
-      width: 1px; height: 18px;
-      background: rgba(255,255,255,0.2);
-    }
+    .cred-sep { width: 1px; height: 18px; background: rgba(255,255,255,0.2); }
 
-    /* Buttons */
+    .hero-btns { display: flex; flex-direction: column; gap: 12px; max-width: 400px; }
+
+
+    /* ── BUTTONS ── */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      font-family: var(--font-b);
-      font-weight: 800;
-      font-size: 17px;
-      padding: 18px 32px;
-      border-radius: var(--r);
-      border: none;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.2px;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      font-family: var(--font-b); font-weight: 800; font-size: 17px;
+      padding: 18px 32px; border-radius: var(--r); border: none;
+      cursor: pointer; transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      letter-spacing: 0.2px; white-space: nowrap;
     }
     .btn-green {
-      background: var(--green);
-      color: #000;
-      box-shadow: 0 4px 24px rgba(34, 197, 94, 0.30);
+      background: var(--green); color: #000;
+      box-shadow: 0 4px 24px rgba(34,197,94,0.28);
     }
-    .btn-green:hover {
-      background: var(--green-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 32px rgba(34, 197, 94, 0.40);
-    }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.25);
-    }
-    .btn-outline:hover {
-      border-color: var(--green);
-      color: var(--green);
-      transform: translateY(-1px);
-    }
+    .btn-green:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(34,197,94,0.38); }
+    .btn-outline { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.24); }
+    .btn-outline:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
     .btn-full { width: 100%; }
 
-    .hero-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 400px;
-    }
 
-
-    /* ════════════════════════════════
-       TRUST ANGLES
-    ════════════════════════════════ */
-    .angles-section { background: var(--dark2); }
-
-    .section-label {
-      display: inline-block;
-      color: var(--green);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .section-title {
-      font-family: var(--font-h);
-      font-size: clamp(34px, 8vw, 52px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 0;
-    }
-
-    .angles-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 36px;
-    }
-    .angle-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 28px 24px;
-      transition: border-color 0.25s, box-shadow 0.25s;
-      position: relative;
-      overflow: hidden;
-    }
-    .angle-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--green);
-      border-radius: 0 2px 2px 0;
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .angle-card:hover::before { opacity: 1; }
-    .angle-card:hover {
-      border-color: rgba(34, 197, 94, 0.35);
-      box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 20px rgba(34,197,94,0.07);
-    }
-    .angle-icon {
-      width: 46px; height: 46px;
-      background: var(--green-glow);
-      border-radius: 12px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--green);
-      font-size: 19px;
-      margin-bottom: 16px;
-      transition: background 0.2s;
-    }
-    .angle-card:hover .angle-icon {
-      background: rgba(34, 197, 94, 0.3);
-    }
-    .angle-trigger {
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 7px;
-    }
-    .angle-headline {
-      font-family: var(--font-h);
-      font-size: 27px;
-      font-weight: 800;
-      text-transform: uppercase;
-      line-height: 1.1;
-      margin-bottom: 10px;
-    }
-    .angle-body {
-      font-size: 15px;
-      color: rgba(255,255,255,0.66);
-      line-height: 1.72;
-    }
-
-
-    /* ════════════════════════════════
-       PHOTO STRIP
-    ════════════════════════════════ */
-    .photo-strip {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 8px;
-      margin-top: 44px;
-      border-radius: var(--r-lg);
-      overflow: hidden;
-    }
-    .ps-item {
-      aspect-ratio: 1;
-      overflow: hidden;
-      position: relative;
-    }
-    .ps-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.82) saturate(0.85);
-      transition: transform 0.5s var(--ease), filter 0.3s;
-    }
-    .ps-item:hover img {
-      transform: scale(1.06);
-      filter: brightness(1) saturate(1);
-    }
-    .ps-item .ps-label {
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-      padding: 16px 12px 10px;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: rgba(255,255,255,0.8);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-    .ps-item:hover .ps-label { opacity: 1; }
-
-
-    /* ════════════════════════════════
-       BOOKING SECTION
-    ════════════════════════════════ */
-    .booking-section { background: var(--dark); }
+    /* ── BOOKING FORM (high on page) ── */
+    .booking-section { background: var(--dark2); }
     .booking-card {
-      background: var(--dark2);
-      border: 1px solid rgba(34, 197, 94, 0.22);
-      border-radius: var(--r-lg);
-      padding: 38px 28px;
-      box-shadow:
-        0 0 0 1px rgba(34,197,94,0.06),
-        0 24px 60px rgba(0,0,0,0.45),
-        0 0 40px rgba(34,197,94,0.05);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(34,197,94,0.22);
+      border-radius: var(--r-lg); padding: 38px 28px;
+      box-shadow: 0 0 0 1px rgba(34,197,94,0.05), 0 24px 60px rgba(0,0,0,0.40);
     }
     .booking-pill {
-      display: inline-block;
-      background: var(--green);
-      color: #000;
-      font-weight: 800;
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      padding: 5px 14px;
-      border-radius: 50px;
-      margin-bottom: 14px;
+      display: inline-block; background: var(--green); color: #000;
+      font-weight: 800; font-size: 11px; letter-spacing: 1px;
+      text-transform: uppercase; padding: 5px 14px; border-radius: 50px; margin-bottom: 14px;
     }
     .booking-title {
-      font-family: var(--font-h);
-      font-size: clamp(30px, 7vw, 42px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.05;
-      margin-bottom: 8px;
+      font-family: var(--font-h); font-size: clamp(28px, 7vw, 40px);
+      font-weight: 900; text-transform: uppercase; line-height: 1.05; margin-bottom: 8px;
     }
     .booking-sub {
-      font-size: 15px;
-      color: rgba(255,255,255,0.58);
-      line-height: 1.65;
-      margin-bottom: 28px;
+      font-size: 15px; color: rgba(255,255,255,0.60); line-height: 1.65; margin-bottom: 28px;
     }
 
-    /* Form fields */
     .form-field { margin-bottom: 15px; }
     .form-field label {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.48);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 7px;
+      display: block; font-size: 11px; font-weight: 700;
+      color: rgba(255,255,255,0.48); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px;
     }
     .form-field input,
     .form-field select,
     .form-field textarea {
-      width: 100%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.11);
-      border-radius: 9px;
-      padding: 14px 16px;
-      color: var(--white);
-      font-family: var(--font-b);
-      font-size: 16px; /* 16px prevents iOS zoom */
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-      -webkit-appearance: none;
+      width: 100%; background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12); border-radius: 9px;
+      padding: 14px 16px; color: var(--white); font-family: var(--font-b);
+      font-size: 16px; outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s; -webkit-appearance: none;
     }
     .form-field input::placeholder,
     .form-field textarea::placeholder { color: rgba(255,255,255,0.28); }
     .form-field input:focus,
     .form-field select:focus,
-    .form-field textarea:focus {
-      border-color: var(--green);
-      box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.12);
-    }
+    .form-field textarea:focus { border-color: var(--green); box-shadow: 0 0 0 3px rgba(34,197,94,0.12); }
     .form-field select {
       cursor: pointer;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2322c55e' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 16px center;
-      padding-right: 44px;
+      background-repeat: no-repeat; background-position: right 16px center; padding-right: 44px;
     }
     .form-field select option { background: #1a1a1a; color: #fff; }
     .form-field textarea { resize: none; height: 86px; }
 
     .form-disclaimer {
-      text-align: center;
-      font-size: 12px;
-      color: rgba(255,255,255,0.35);
-      margin-top: 12px;
-      line-height: 1.5;
+      text-align: center; font-size: 12px; color: rgba(255,255,255,0.35);
+      margin-top: 12px; line-height: 1.5;
     }
     .form-disclaimer i { color: var(--green); margin-right: 4px; }
 
-    /* Success state */
     .form-body { transition: opacity 0.3s; }
-    .form-success {
-      display: none;
-      text-align: center;
-      padding: 12px 0 4px;
-    }
+    .form-success { display: none; text-align: center; padding: 12px 0 4px; }
     .form-success.show { display: block; }
     .success-icon {
-      width: 68px; height: 68px;
-      background: var(--green);
-      border-radius: 50%;
+      width: 68px; height: 68px; background: var(--green); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-size: 30px; color: #000;
-      margin: 0 auto 20px;
-      animation: popIn 0.4s var(--ease);
-      box-shadow: 0 0 30px rgba(34,197,94,0.35);
+      font-size: 30px; color: #000; margin: 0 auto 20px;
+      animation: popIn 0.4s var(--ease); box-shadow: 0 0 30px rgba(34,197,94,0.35);
     }
-    .success-title {
-      font-family: var(--font-h);
-      font-size: 36px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .success-body {
-      font-size: 15px;
-      color: rgba(255,255,255,0.62);
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
+    .success-title { font-family: var(--font-h); font-size: 36px; font-weight: 900; text-transform: uppercase; margin-bottom: 10px; }
+    .success-body { font-size: 15px; color: rgba(255,255,255,0.62); line-height: 1.75; margin-bottom: 24px; }
     @keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
 
 
-    /* ════════════════════════════════
-       REVIEWS
-    ════════════════════════════════ */
+    /* ── TRUST ANGLES ── */
+    .angles-section { background: var(--dark); }
+    .section-label {
+      display: inline-block; color: var(--green);
+      font-size: 11px; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .section-title {
+      font-family: var(--font-h); font-size: clamp(32px, 8vw, 50px);
+      font-weight: 900; text-transform: uppercase; line-height: 1.05; margin-bottom: 0;
+    }
+
+    .angles-grid { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
+    .angle-card {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 28px 24px;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .angle-card::before {
+      content: ''; position: absolute; top: 0; left: 0;
+      width: 3px; height: 100%; background: var(--green);
+      border-radius: 0 2px 2px 0; opacity: 0; transition: opacity 0.3s;
+    }
+    .angle-card:hover::before { opacity: 1; }
+    .angle-card:hover { border-color: rgba(34,197,94,0.32); box-shadow: 0 8px 36px rgba(0,0,0,0.28); }
+    .angle-icon {
+      width: 46px; height: 46px; background: var(--green-glow); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 19px; margin-bottom: 16px;
+    }
+    .angle-trigger { font-size: 12px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 7px; }
+    .angle-headline { font-family: var(--font-h); font-size: 26px; font-weight: 800; text-transform: uppercase; line-height: 1.1; margin-bottom: 10px; }
+    .angle-body { font-size: 15px; color: rgba(255,255,255,0.66); line-height: 1.72; }
+
+
+    /* ── PHOTO GRID ── */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px; margin-top: 40px;
+      border-radius: var(--r-lg); overflow: hidden;
+    }
+    .pg-item { aspect-ratio: 1; overflow: hidden; position: relative; }
+    .pg-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.84) saturate(0.88);
+      transition: transform 0.5s var(--ease), filter 0.3s;
+    }
+    .pg-item:hover img { transform: scale(1.06); filter: brightness(1) saturate(1); }
+
+
+    /* ── REVIEWS ── */
     .reviews-section { background: var(--dark2); }
 
     .google-strip {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      padding: 9px 18px;
-      margin-top: 16px;
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 50px; padding: 9px 18px; margin-top: 16px;
     }
-    .google-strip svg { flex-shrink: 0; }
     .google-strip-text { font-size: 14px; font-weight: 700; color: rgba(255,255,255,0.88); }
     .google-strip-stars { color: #fbbf24; font-size: 14px; letter-spacing: 1.5px; }
 
-    .reviews-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      margin-top: 36px;
-    }
+    .reviews-list { display: flex; flex-direction: column; gap: 14px; margin-top: 36px; }
     .review-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--r-lg);
-      padding: 26px 22px;
-      transition: border-color 0.25s;
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: var(--r-lg); padding: 26px 22px; transition: border-color 0.25s;
     }
-    .review-card:hover { border-color: rgba(34,197,94,0.3); }
+    .review-card:hover { border-color: rgba(34,197,94,0.28); }
     .review-stars { color: #fbbf24; font-size: 16px; letter-spacing: 2px; margin-bottom: 13px; }
-    .review-text {
-      font-size: 16px;
-      color: rgba(255,255,255,0.80);
-      line-height: 1.78;
-      font-style: italic;
-      margin-bottom: 18px;
-    }
+    .review-text { font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.78; font-style: italic; margin-bottom: 18px; }
     .review-author { display: flex; align-items: center; gap: 12px; }
     .review-avatar {
-      width: 42px; height: 42px;
-      border-radius: 50%;
+      width: 42px; height: 42px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
       font-family: var(--font-h); font-weight: 900; font-size: 16px;
       color: #000; flex-shrink: 0;
     }
     .review-name { font-weight: 700; font-size: 15px; }
-    .review-verified {
-      font-size: 12px; color: var(--green);
-      display: flex; align-items: center; gap: 4px; margin-top: 2px;
-    }
+    .review-verified { font-size: 12px; color: var(--green); display: flex; align-items: center; gap: 4px; margin-top: 2px; }
 
-    /* Shop photo pair */
     .photo-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-top: 36px;
-      border-radius: var(--r-lg);
-      overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px; margin-top: 36px; border-radius: var(--r-lg); overflow: hidden;
     }
-    .photo-pair-item {
-      aspect-ratio: 4/3;
-      overflow: hidden;
-    }
+    .photo-pair-item { aspect-ratio: 4/3; overflow: hidden; }
     .photo-pair-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      filter: brightness(0.82) saturate(0.85);
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.84) saturate(0.88);
       transition: transform 0.5s var(--ease), filter 0.3s;
     }
-    .photo-pair-item:hover img {
-      transform: scale(1.05);
-      filter: brightness(1) saturate(1);
-    }
+    .photo-pair-item:hover img { transform: scale(1.05); filter: brightness(1) saturate(1); }
 
-    .section-cta {
-      text-align: center;
-      margin-top: 40px;
-    }
+    .section-cta { text-align: center; margin-top: 40px; }
 
 
-    /* ════════════════════════════════
-       FINAL CTA
-    ════════════════════════════════ */
+    /* ── FINAL CTA ── */
     .final-section {
-      background: var(--dark);
-      border-top: 1px solid rgba(34,197,94,0.12);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
+      background: var(--dark); border-top: 1px solid rgba(34,197,94,0.10);
+      text-align: center; position: relative; overflow: hidden;
     }
     .final-glow {
-      position: absolute;
-      top: -60px; left: 50%;
-      transform: translateX(-50%);
+      position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
       width: 600px; height: 400px;
-      background: radial-gradient(ellipse, rgba(34,197,94,0.09), transparent 65%);
+      background: radial-gradient(ellipse, rgba(34,197,94,0.08), transparent 65%);
       pointer-events: none;
     }
     .final-content { position: relative; }
     .final-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(34,197,94,0.12);
-      border: 1px solid rgba(34,197,94,0.35);
-      border-radius: 50px;
-      color: var(--green);
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      padding: 7px 18px;
-      margin-bottom: 22px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(34,197,94,0.11); border: 1px solid rgba(34,197,94,0.32);
+      border-radius: 50px; color: var(--green); font-size: 13px; font-weight: 700;
+      letter-spacing: 0.5px; padding: 7px 18px; margin-bottom: 22px;
     }
     .final-h {
-      font-family: var(--font-h);
-      font-size: clamp(40px, 10vw, 64px);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 1.0;
-      margin-bottom: 18px;
+      font-family: var(--font-h); font-size: clamp(38px, 10vw, 60px);
+      font-weight: 900; text-transform: uppercase; line-height: 1.0; margin-bottom: 18px;
     }
     .final-sub {
-      font-size: 17px;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.72;
-      max-width: 520px;
-      margin: 0 auto 36px;
+      font-size: 17px; color: rgba(255,255,255,0.65); line-height: 1.72;
+      max-width: 500px; margin: 0 auto 36px;
     }
     .final-btns {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      max-width: 400px;
-      margin: 0 auto;
+      display: flex; flex-direction: column; gap: 12px;
+      max-width: 400px; margin: 0 auto;
     }
-    .final-details {
-      margin-top: 28px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .final-detail {
-      font-size: 14px;
-      color: rgba(255,255,255,0.45);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
+    .final-details { margin-top: 28px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .final-detail { font-size: 14px; color: rgba(255,255,255,0.45); display: flex; align-items: center; gap: 8px; }
     .final-detail i { color: var(--green); font-size: 12px; }
 
 
-    /* ════════════════════════════════
-       FOOTER
-    ════════════════════════════════ */
-    footer {
-      background: var(--dark2);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 40px 0 28px;
-    }
+    /* ── FOOTER ── */
+    footer { background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.06); padding: 40px 0 28px; }
     .footer-inner { text-align: center; }
-    .footer-logo {
-      font-family: var(--font-h);
-      font-size: 22px;
-      font-weight: 900;
-      text-transform: uppercase;
-      margin-bottom: 3px;
-    }
-    .footer-tagline {
-      font-size: 11px;
-      color: var(--green);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px 20px;
-      margin-bottom: 20px;
-    }
-    .footer-links a {
-      font-size: 14px;
-      color: rgba(255,255,255,0.5);
-      transition: color 0.2s;
-    }
+    .footer-logo { font-family: var(--font-h); font-size: 22px; font-weight: 900; text-transform: uppercase; margin-bottom: 3px; }
+    .footer-tagline { font-size: 11px; color: var(--green); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 24px; }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 20px; margin-bottom: 20px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
     .footer-links a:hover { color: var(--green); }
-    .footer-copy {
-      font-size: 12px;
-      color: rgba(255,255,255,0.22);
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.22); margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.06); }
 
 
-    /* ════════════════════════════════
-       STICKY BOTTOM CTA
-    ════════════════════════════════ */
+    /* ── STICKY CTA ── */
     .sticky-cta {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 500;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
       background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
-      color: #000;
-      font-family: var(--font-b);
-      font-weight: 800;
-      font-size: 17px;
-      padding: 19px 24px;
-      text-align: center;
-      cursor: pointer;
-      border: none;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      box-shadow: 0 -6px 24px rgba(34, 197, 94, 0.28);
+      color: #000; font-family: var(--font-b); font-weight: 800; font-size: 17px;
+      padding: 19px 24px; text-align: center; cursor: pointer; border: none; width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      box-shadow: 0 -6px 24px rgba(34,197,94,0.26);
       transition: opacity 0.3s, transform 0.3s;
-      letter-spacing: 0.2px;
     }
-    .sticky-cta.hidden {
-      opacity: 0;
-      transform: translateY(100%);
-      pointer-events: none;
-    }
+    .sticky-cta.hidden { opacity: 0; transform: translateY(100%); pointer-events: none; }
 
 
-    /* ════════════════════════════════
-       SCROLL REVEAL
-    ════════════════════════════════ */
-    .reveal {
-      opacity: 0;
-      transform: translateY(28px);
-      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
-    }
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
     .reveal.on { opacity: 1; transform: none; }
-    .reveal-l {
-      opacity: 0;
-      transform: translateX(-24px);
-      transition: opacity 0.65s var(--ease), transform 0.65s var(--ease);
-    }
-    .reveal-l.on { opacity: 1; transform: none; }
 
 
-    /* ════════════════════════════════
-       RESPONSIVE — DESKTOP ENHANCE
-    ════════════════════════════════ */
+    /* ── RESPONSIVE ── */
     @media (min-width: 560px) {
       .hero-btns { flex-direction: row; }
       .hero-btns .btn { flex: 1; }
-      .photo-strip { grid-template-columns: repeat(4, 1fr); }
+      .photo-grid { grid-template-columns: repeat(6, 1fr); }
     }
     @media (min-width: 720px) {
-      .angles-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-      }
-      .final-btns { flex-direction: row; max-width: 480px; }
+      .angles-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .final-btns { flex-direction: row; max-width: 460px; }
       .final-btns .btn { flex: 1; }
-    }
-    @media (min-width: 860px) {
-      .hero { min-height: 86vh; }
     }
   </style>
 </head>
 <body>
 
-<!-- ══════════════════════════════════════
-     TOP BAR
-══════════════════════════════════════ -->
+<!-- TOP BAR -->
 <header class="top-bar">
   <div class="top-bar-inner">
     <div class="logo-wrap">
@@ -823,9 +425,7 @@
 </header>
 
 
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-grad"></div>
@@ -836,13 +436,13 @@
     </div>
 
     <h1 class="hero-h1">
-      Get Your Truck<br>
-      Fixed Right<br>
-      <span class="accent">The First Time.</span>
+      A Diesel Shop<br>
+      You Can Actually<br>
+      <span class="accent">Trust.</span>
     </h1>
 
     <p class="hero-sub">
-      Fort Pierce's go-to diesel and auto shop. We give it to you straight — honest work, real answers, and a crew that actually knows diesel.
+      We know your truck, we know diesel, and we give it to you straight. Fort Pierce's go-to shop for Cummins, Powerstroke, and Duramax — book today and your first visit is 10% off.
     </p>
 
     <div class="cred-bar">
@@ -874,79 +474,13 @@
 </section>
 
 
-<!-- ══════════════════════════════════════
-     TRUST ANGLES
-══════════════════════════════════════ -->
-<section class="angles-section section">
-  <div class="wrap">
-    <div class="reveal">
-      <div class="section-label">Why Diesel Drivers Choose Us</div>
-      <h2 class="section-title">We've Heard It All.<br><span style="color:var(--green)">We Fix It All.</span></h2>
-    </div>
-
-    <div class="angles-grid">
-      <div class="angle-card reveal">
-        <div class="angle-icon"><i class="fas fa-truck-moving"></i></div>
-        <div class="angle-trigger">Broke down or stranded?</div>
-        <div class="angle-headline">We Get You In Fast.</div>
-        <div class="angle-body">When your truck stops, your day stops. We prioritize breakdowns and get you back on the road without a week-long wait.</div>
-      </div>
-
-      <div class="angle-card reveal">
-        <div class="angle-icon"><i class="fas fa-hand-holding-usd"></i></div>
-        <div class="angle-trigger">Tired of dealership games?</div>
-        <div class="angle-headline">No Runaround. Fair Pricing.</div>
-        <div class="angle-body">We tell you what's wrong, what it costs, and what can wait. No surprise charges. No work done without your say-so.</div>
-      </div>
-
-      <div class="angle-card reveal">
-        <div class="angle-icon"><i class="fas fa-search"></i></div>
-        <div class="angle-trigger">Done googling random shops?</div>
-        <div class="angle-headline">The Shop That Shows Up for Diesel Guys.</div>
-        <div class="angle-body">Cummins, Powerstroke, Duramax — we know your engine. We're the shop diesel guys in Fort Pierce actually trust.</div>
-      </div>
-    </div>
-
-    <!-- Real shop photos -->
-    <div class="photo-strip reveal">
-      <div class="ps-item">
-        <img
-          src="https://cdn10.localdatacdn.com/fl/fort-pierce/6639501/original/hXmbkP3A6N.jpeg"
-          alt="Transmission service at Modern Diesel Fort Pierce"
-          loading="lazy"
-        />
-        <div class="ps-label">Transmission Work</div>
-      </div>
-      <div class="ps-item">
-        <img
-          src="https://cdn10.localdatacdn.com/fl/fort-pierce/6639501/original/AsuNvArraQ.jpeg"
-          alt="Diesel engine repair at Modern Diesel"
-          loading="lazy"
-        />
-        <div class="ps-label">Engine Repair</div>
-      </div>
-      <div class="ps-item">
-        <img
-          src="https://cdn10.localdatacdn.com/fl/fort-pierce/6639501/original/aTUcwt4F9I.jpg"
-          alt="Twin turbo diesel performance build"
-          loading="lazy"
-        />
-        <div class="ps-label">Performance Builds</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ══════════════════════════════════════
-     BOOKING FORM
-══════════════════════════════════════ -->
+<!-- BOOKING FORM — high on page -->
 <section class="booking-section section" id="book">
   <div class="wrap">
     <div class="booking-card reveal">
       <div class="booking-pill">🔥 10% Off — First Visit Only</div>
       <h2 class="booking-title">Book Your Appointment</h2>
-      <p class="booking-sub">Fill this out and we'll call you within the hour to confirm. Discount applied at checkout — no coupon code needed.</p>
+      <p class="booking-sub">Fill this out and we'll call you within the hour to confirm. Your 10% off is applied at checkout — no coupon needed.</p>
 
       <div class="form-body" id="formBody">
         <form id="bookForm" novalidate>
@@ -978,8 +512,8 @@
             </select>
           </div>
           <div class="form-field">
-            <label>Anything else we should know? <span style="opacity:.5">(optional)</span></label>
-            <textarea name="message" placeholder="Describe the issue, any symptoms, or anything that's helpful..."></textarea>
+            <label>Anything else? <span style="opacity:.5">(optional)</span></label>
+            <textarea name="message" placeholder="Describe the issue, symptoms, or anything helpful..."></textarea>
           </div>
           <button type="submit" class="btn btn-green btn-full" style="margin-top:6px">
             <i class="fas fa-calendar-check"></i> Claim 10% Off &amp; Book Now
@@ -993,7 +527,7 @@
       <div class="form-success" id="bookSuccess">
         <div class="success-icon"><i class="fas fa-check"></i></div>
         <div class="success-title">You're Booked!</div>
-        <p class="success-body">Our team will call you shortly to confirm your appointment and lock in your 10% discount. We can't wait to see your truck.</p>
+        <p class="success-body">Our team will call you shortly to confirm your time and lock in your 10% discount. We look forward to seeing your truck.</p>
         <a href="tel:7722818600" class="btn btn-outline" style="max-width:280px;margin:0 auto">
           <i class="fas fa-phone"></i> (772) 281-8600
         </a>
@@ -1003,9 +537,63 @@
 </section>
 
 
-<!-- ══════════════════════════════════════
-     REVIEWS + PROOF
-══════════════════════════════════════ -->
+<!-- TRUST ANGLES -->
+<section class="angles-section section">
+  <div class="wrap">
+    <div class="reveal">
+      <div class="section-label">Why Diesel Drivers Choose Us</div>
+      <h2 class="section-title">We've Heard It All.<br><span style="color:var(--green)">We Fix It All.</span></h2>
+    </div>
+
+    <div class="angles-grid">
+      <div class="angle-card reveal">
+        <div class="angle-icon"><i class="fas fa-truck-moving"></i></div>
+        <div class="angle-trigger">Broke down or stranded?</div>
+        <div class="angle-headline">We Get You In Fast.</div>
+        <div class="angle-body">When your truck stops, your day stops. We prioritize breakdowns and get you back on the road — no week-long waits.</div>
+      </div>
+
+      <div class="angle-card reveal">
+        <div class="angle-icon"><i class="fas fa-hand-holding-usd"></i></div>
+        <div class="angle-trigger">Tired of dealership games?</div>
+        <div class="angle-headline">No Runaround. Fair Pricing.</div>
+        <div class="angle-body">We tell you what's wrong, what it costs, and what can wait. No surprise charges, no work done without your say-so.</div>
+      </div>
+
+      <div class="angle-card reveal">
+        <div class="angle-icon"><i class="fas fa-search"></i></div>
+        <div class="angle-trigger">Done googling random shops?</div>
+        <div class="angle-headline">The Shop That Shows Up for Diesel Guys.</div>
+        <div class="angle-body">Cummins, Powerstroke, Duramax — we know your engine. We're the shop diesel guys in Fort Pierce actually trust.</div>
+      </div>
+    </div>
+
+    <!-- 6 shop photos -->
+    <div class="photo-grid reveal">
+      <div class="pg-item">
+        <img src="images/lp-img-1.jpg" alt="Transmission rebuild at Modern Diesel Fort Pierce" loading="lazy" />
+      </div>
+      <div class="pg-item">
+        <img src="images/lp-img-2.jpg" alt="Mechanic working under diesel truck" loading="lazy" />
+      </div>
+      <div class="pg-item">
+        <img src="images/lp-img-3.jpg" alt="Modern Diesel crew at work" loading="lazy" />
+      </div>
+      <div class="pg-item">
+        <img src="images/lp-img-4.jpg" alt="Engine repair at Modern Diesel" loading="lazy" />
+      </div>
+      <div class="pg-item">
+        <img src="images/lp-img-5.jpg" alt="Diesel engine work Fort Pierce" loading="lazy" />
+      </div>
+      <div class="pg-item">
+        <img src="images/lp-img-6.jpg" alt="Turbo installation at Modern Diesel" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- REVIEWS + PROOF -->
 <section class="reviews-section section">
   <div class="wrap">
     <div class="reveal">
@@ -1061,21 +649,12 @@
       </div>
     </div>
 
-    <!-- Real shop photos -->
     <div class="photo-pair reveal">
       <div class="photo-pair-item">
-        <img
-          src="https://cdn10.localdatacdn.com/fl/fort-pierce/6639501/original/CUhqqUsCXO.jpg"
-          alt="Modern Diesel service shop interior — Fort Pierce FL"
-          loading="lazy"
-        />
+        <img src="images/lp-img-2.jpg" alt="Diesel truck repair at Modern Diesel Fort Pierce" loading="lazy" />
       </div>
       <div class="photo-pair-item">
-        <img
-          src="https://cdn8.localdatacdn.com/fl/fort-pierce/6639501/original/1UJz4VddDF.jpg"
-          alt="Transmission service bay at Modern Diesel"
-          loading="lazy"
-        />
+        <img src="images/lp-img-4.jpg" alt="Engine work at Modern Diesel" loading="lazy" />
       </div>
     </div>
 
@@ -1088,9 +667,7 @@
 </section>
 
 
-<!-- ══════════════════════════════════════
-     FINAL CTA
-══════════════════════════════════════ -->
+<!-- FINAL CTA -->
 <section class="final-section section">
   <div class="final-glow"></div>
   <div class="wrap final-content reveal">
@@ -1104,7 +681,7 @@
     </h2>
 
     <p class="final-sub">
-      Small diesel problems become expensive ones fast. Book today, lock in your 10% off, and let a team that actually knows diesel get you sorted out.
+      Small diesel problems turn expensive fast. Book today, lock in your 10% off, and get it handled by a crew that actually knows diesel.
     </p>
 
     <div class="final-btns">
@@ -1134,9 +711,7 @@
 </section>
 
 
-<!-- ══════════════════════════════════════
-     FOOTER
-══════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="wrap footer-inner">
     <div class="footer-logo">Modern Diesel</div>
@@ -1146,49 +721,37 @@
       <a href="#book" onclick="scrollToBook(event)">Book Online</a>
       <a href="https://maps.google.com/?q=1911+Okeechobee+Rd+Fort+Pierce+FL" target="_blank" rel="noopener">Directions</a>
     </div>
-    <div class="footer-copy">&copy; 2024 Modern Diesel Repair &amp; Performance. All rights reserved.</div>
+    <div class="footer-copy">&copy; 2025 Modern Diesel Repair &amp; Performance. All rights reserved.</div>
   </div>
 </footer>
 
 
-<!-- ══════════════════════════════════════
-     STICKY BOTTOM CTA
-══════════════════════════════════════ -->
+<!-- STICKY BOTTOM CTA -->
 <button class="sticky-cta" id="stickyCta" onclick="scrollToBook()">
   <i class="fas fa-tag"></i> Claim 10% Off — Book Now
 </button>
 
 
-<!-- ══════════════════════════════════════
-     JAVASCRIPT
-══════════════════════════════════════ -->
 <script>
-  /* ── Scroll to booking form ── */
   function scrollToBook(e) {
     if (e) e.preventDefault();
     const el = document.getElementById('book');
-    const offset = 70;
-    const top = el.getBoundingClientRect().top + window.scrollY - offset;
+    const top = el.getBoundingClientRect().top + window.scrollY - 70;
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  /* ── Form submit ── */
   document.getElementById('bookForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const name    = this.querySelector('[name="name"]').value.trim();
     const phone   = this.querySelector('[name="phone"]').value.trim();
     const vehicle = this.querySelector('[name="vehicle"]').value.trim();
     if (!name || !phone || !vehicle) {
-      // Highlight missing fields
       [['name', name], ['phone', phone], ['vehicle', vehicle]].forEach(([n, v]) => {
         if (!v) {
           const inp = this.querySelector(`[name="${n}"]`);
           inp.style.borderColor = '#ef4444';
           inp.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.15)';
-          inp.addEventListener('input', function() {
-            this.style.borderColor = '';
-            this.style.boxShadow = '';
-          }, { once: true });
+          inp.addEventListener('input', function() { this.style.borderColor = ''; this.style.boxShadow = ''; }, { once: true });
         }
       });
       return;
@@ -1202,8 +765,7 @@
     }, 500);
   });
 
-  /* ── Scroll reveal ── */
-  const revEls = document.querySelectorAll('.reveal, .reveal-l');
+  const revEls = document.querySelectorAll('.reveal');
   const revObs = new IntersectionObserver((entries) => {
     entries.forEach((entry, i) => {
       if (entry.isIntersecting) {
@@ -1214,7 +776,6 @@
   }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
   revEls.forEach(el => revObs.observe(el));
 
-  /* ── Sticky CTA: hide when booking form is on screen ── */
   const stickyCta   = document.getElementById('stickyCta');
   const bookSection = document.getElementById('book');
   const ctaObs = new IntersectionObserver((entries) => {
@@ -1222,7 +783,6 @@
   }, { threshold: 0.25 });
   ctaObs.observe(bookSection);
 
-  /* ── Hero image subtle zoom on load ── */
   window.addEventListener('load', () => {
     const bg = document.getElementById('heroBg');
     if (bg) bg.style.transform = 'scale(1)';
