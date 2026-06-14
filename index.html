@@ -780,13 +780,19 @@
       });
       return;
     }
+    const service = this.querySelector('[name="service"]') ? this.querySelector('[name="service"]').value : '';
+    const message = this.querySelector('[name="message"]') ? this.querySelector('[name="message"]').value.trim() : '';
     const body = document.getElementById('formBody');
     body.style.opacity = '0.3';
     body.style.pointerEvents = 'none';
-    setTimeout(() => {
+    fetch('/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, phone, vehicle, service, message })
+    }).finally(() => {
       body.style.display = 'none';
       document.getElementById('bookSuccess').classList.add('show');
-    }, 500);
+    });
   });
 
   const revEls = document.querySelectorAll('.reveal');
