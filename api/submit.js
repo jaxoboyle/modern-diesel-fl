@@ -15,7 +15,9 @@ export default async function handler(req, res) {
           firstName: name.split(' ')[0] || name,
           lastName: name.split(' ').slice(1).join(' ') || '',
           phone,
-          emailBody: `New booking request from your website!\n\nName: ${name}\nPhone: ${phone}\nVehicle: ${vehicle}\nService: ${service}\nNotes: ${message}\n\nCall back within the hour to confirm.`
+          address1: vehicle,
+          companyName: service,
+          website: message
         }),
       }
     );
