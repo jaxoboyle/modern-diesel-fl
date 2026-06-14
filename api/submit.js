@@ -14,12 +14,8 @@ export default async function handler(req, res) {
         body: JSON.stringify({
           firstName: name.split(' ')[0] || name,
           lastName: name.split(' ').slice(1).join(' ') || '',
-          name,
           phone,
-          vehicle,
-          service,
-          message,
-          fullSummary: `Name: ${name}\nPhone: ${phone}\nVehicle: ${vehicle}\nService: ${service}\nNotes: ${message}`
+          emailBody: `New booking request from your website!\n\nName: ${name}\nPhone: ${phone}\nVehicle: ${vehicle}\nService: ${service}\nNotes: ${message}\n\nCall back within the hour to confirm.`
         }),
       }
     );
