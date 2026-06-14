@@ -11,7 +11,16 @@ export default async function handler(req, res) {
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, phone, vehicle, service, message }),
+        body: JSON.stringify({
+          firstName: name.split(' ')[0] || name,
+          lastName: name.split(' ').slice(1).join(' ') || '',
+          name,
+          phone,
+          vehicle,
+          service,
+          message,
+          fullSummary: `Name: ${name}\nPhone: ${phone}\nVehicle: ${vehicle}\nService: ${service}\nNotes: ${message}`
+        }),
       }
     );
 
