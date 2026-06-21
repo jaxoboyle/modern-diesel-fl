@@ -19,8 +19,9 @@ export default async function handler(req, res) {
     <p><strong>Name:</strong> ${name || '—'}</p>
     <p><strong>Phone:</strong> ${phone || '—'}</p>
     <p><strong>Vehicle:</strong> ${vehicle || '—'}</p>
-    <p><strong>Service:</strong> ${service || '—'}</p>
-    <p><strong>Notes:</strong> ${message || '—'}</p>
+    <p><strong>Service Requested:</strong> ${service || '—'}</p>
+    <p><strong>Message:</strong> ${message || '—'}</p>
+    <p><strong>Submission Source:</strong> moderndieselfl.com</p>
     <hr>
     <p>Call back within the hour to confirm.</p>
   `;
@@ -35,7 +36,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Modern Diesel Leads <onboarding@resend.dev>',
-        to: ['jqoboyle@gmail.com'],
+        to: ['jqoboyle@gmail.com', 'moderndieselpsl@gmail.com'],
         subject: `New website lead — ${name || 'Unknown'}`,
         html: emailHtml,
       }),
