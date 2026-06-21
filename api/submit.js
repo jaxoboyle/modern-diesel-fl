@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'Modern Diesel Leads <onboarding@resend.dev>',
+        from: 'Modern Diesel Leads <leads@moderndieselfl.com>',
         to: ['jqoboyle@gmail.com', 'moderndieselpsl@gmail.com'],
         subject: `New website lead — ${name || 'Unknown'}`,
         html: emailHtml,
